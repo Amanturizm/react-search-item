@@ -9,11 +9,12 @@ interface ICell {
 interface IProps {
   cells: ICell[];
   onClickHandler: (index: number) => void;
+  winning: boolean;
 }
 
-const Cell: React.FC<IProps> = ({cells, onClickHandler}) => {
+const Cell: React.FC<IProps> = ({cells, onClickHandler, winning}) => {
   return (
-    <div className="Cells">
+    <div className={`Cells ${winning ? 'clickedCell' : null}`}>
       {
         cells.map((cell: ICell, index: number) => {
           return (
