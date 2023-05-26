@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import Cell from './components/Cell/Cell';
+import Cells from './components/Cells/Cells';
+import Counter from './components/Counter/Counter';
 
 interface ICell {
   hasItem: boolean;
@@ -14,16 +15,23 @@ const App = () => {
     defaultCells.push({hasItem: false, clicked: false});
   }
 
-  const [cells, setCell] = useState<ICell[]>(defaultCells);
+  defaultCells[Math.floor(Math.random() * defaultCells.length - 0)].hasItem = true;
 
+  const [cells, setCells] = useState<ICell[]>(defaultCells);
+  const [count, setCount] = useState<number>(0);
+  const incrementCount = (index: number): void => {
+    const cellsCopy: ICell[] = [...cells];
+    const cellCopy: ICell = {...cellsCopy[index]};
+    cellCopy.clicked = true;
+    cellsCopy[index] = cellCopy;
+    setCount(count + 1);
+    setCells(cellsCopy);
+  };
 
   return (
     <div className="App">
-      {
-        cells.map((cell: ICell, index: number) => {
-          return <Cell key={index}/>
-        })
-      }
+      <Cells onClickHandler={(index: number) => incrementCount(index)} cells={cells} />
+      <Counter count={count} />
     </div>
   );
 }
