@@ -19,6 +19,8 @@ const App = () => {
 
   const [cells, setCells] = useState<ICell[]>(defaultCells);
   const [count, setCount] = useState<number>(0);
+
+
   const incrementCount = (index: number): void => {
     const cellsCopy: ICell[] = [...cells];
     const cellCopy: ICell = {...cellsCopy[index]};
@@ -28,10 +30,18 @@ const App = () => {
     setCells(cellsCopy);
   };
 
+  const resetGame = (): void => {
+    setCount(0);
+    setCells(defaultCells);
+  }
+
   return (
     <div className="App">
       <Cells onClickHandler={(index: number) => incrementCount(index)} cells={cells} />
-      <Counter count={count} />
+      <div className="options">
+        <Counter count={count} />
+        <button onClick={resetGame} className="reset-btn">Reset</button>
+      </div>
     </div>
   );
 }
