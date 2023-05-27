@@ -6,7 +6,7 @@ interface IProps {
 
 const Counter: React.FC<IProps> = ({count}) => {
   return (
-    <div>Tries: {count}</div>
+    <h2>Tries: {count}</h2>
   );
 };
 

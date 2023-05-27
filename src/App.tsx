@@ -25,7 +25,7 @@ const App = () => {
   const incrementCount = (index: number): void => {
     const cellsCopy: ICell[] = [...cells];
     const cellCopy: ICell = {...cellsCopy[index]};
-    cellCopy.hasItem ? setWinning(true) : setWinning(false)
+    cellCopy.hasItem ? setWinning(true) : setWinning(false);
     cellCopy.clicked = true;
     cellsCopy[index] = cellCopy;
     setCount(count + 1);
@@ -36,18 +36,18 @@ const App = () => {
     setCount(0);
     setCells(defaultCells);
     setWinning(false);
-  }
+  };
 
   return (
     <div className="App">
-      {winning ? <Winning /> : null}
-      <Cells onClickHandler={(index: number) => incrementCount(index)} cells={cells} winning={winning} />
+      {winning ? <Winning/> : null}
+      <Cells onClickHandler={(index: number) => incrementCount(index)} cells={cells} winning={winning}/>
       <div className="options">
-        <Counter count={count} />
+        <Counter count={count}/>
         <button onClick={resetGame} className="reset-btn">Reset</button>
       </div>
     </div>
   );
-}
+};
 
 export default App;

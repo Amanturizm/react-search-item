@@ -1,5 +1,6 @@
 import React from 'react';
 import './Cells.css';
+import snail from './snail.png';
 
 interface ICell {
   hasItem: boolean;
@@ -14,16 +15,21 @@ interface IProps {
 
 const Cell: React.FC<IProps> = ({cells, onClickHandler, winning}) => {
   return (
-    <div className={`Cells ${winning ? 'clickedCell' : null}`}>
+    <div style={winning ? {pointerEvents: 'none'} : {}} className="Cells">
       {
         cells.map((cell: ICell, index: number) => {
           return (
             <div
               key={index}
               className={`Cell ${cell.clicked ? 'clickedCell' : null}`}
+              style={cell.hasItem ? {animation: 'none'} : {}}
               onClick={() => onClickHandler(index)}
             >
-              {cell.hasItem ? <h1 style={{userSelect: 'none'}}>O</h1> : null}
+              {
+                cell.hasItem
+                  ? <img src={snail} className="snail" alt="snail"/>
+                  : null
+              }
             </div>
           )
         })
