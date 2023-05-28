@@ -5,13 +5,13 @@ import snail from './snail.png';
 interface ICell {
   hasItem: boolean;
   clicked: boolean;
-}
+};
 
 interface IProps {
   cells: ICell[];
   onClickHandler: (index: number) => void;
   winning: boolean;
-}
+};
 
 const Cell: React.FC<IProps> = ({cells, onClickHandler, winning}) => {
   return (

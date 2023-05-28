@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IProps {
   count: number | string;
-}
+};
 
 const Counter: React.FC<IProps> = ({count}) => {
   return (

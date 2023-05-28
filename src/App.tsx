@@ -7,14 +7,14 @@ import Winning from './components/Winning/Winning';
 interface ICell {
   hasItem: boolean;
   clicked: boolean;
-}
+};
 
 const App = () => {
   const defaultCells: ICell[] = [];
 
   for (let i: number = 1; i <= 36; i++) {
     defaultCells.push({hasItem: false, clicked: false});
-  }
+  };
 
   defaultCells[Math.floor(Math.random() * defaultCells.length - 0)].hasItem = true;
 
